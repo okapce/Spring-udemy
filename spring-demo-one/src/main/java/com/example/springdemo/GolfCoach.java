@@ -2,26 +2,24 @@ package com.example.springdemo;
 
 import com.example.springdemo.services.FortuneService;
 
-public class BaseballCoach implements Coach{
-	//private field for dependency
+public class GolfCoach implements Coach {
 	private FortuneService fortuneService;
 	
-	//define constructor for DI
-	public BaseballCoach(FortuneService fortuneService) {
+	
+	public GolfCoach(FortuneService fortuneService) {
 		this.fortuneService = fortuneService;
 	}
-	
+
 	@Override
 	public String getDailyWorkout() {
-		return "30 minute workout";
+		// TODO Auto-generated method stub
+		return "swing that club... 1 hour!!!";
 	}
 
 	@Override
 	public String getDailyfortune() {
-		// use FortuneService
+		// TODO Auto-generated method stub
 		return fortuneService.getFortune();
 	}
-	
-	
-	
+
 }

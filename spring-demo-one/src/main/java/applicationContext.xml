@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<context:property-placeholder location="classpath:sport.properties"/>
+	
+    <!-- Define dependency -->
+   	<bean id = "myFortuneService"
+    	class="com.example.springdemo.services.HappyFortuneService">	<!-- TrackCoach"> -->
+   	</bean>
+    
+     <bean id = "myCricketCoach"
+    	class="com.example.springdemo.CricketCoach"> <!-- TrackCoach"> -->
+    		<property name="fortuneService" ref = "myFortuneService"/>	<!--  setter Injection, 
+    									property associates a set method with the "name" provided-->
+    									
+			<!-- inject literal values -->
+			<property name="emailAddress" value = "${foo.email}"/>				<!--  "nickpantin@hotmail.com"/> -->
+			<property name="team" value = "${foo.team}"/>		<!-- "sport Team FC" -->
+   	</bean>
+    
+    <bean id = "myCoach"
+    	class="com.example.springdemo.TrackCoach"> <!-- TrackCoach"> -->
+    		<constructor-arg ref = "myFortuneService"/>	<!--  constructor Injection -->
+   	</bean>
+   	
+   	<bean id = "myRdmFortuneService"
+    	class="com.example.springdemo.services.RandomFortuneService">	
+   	</bean>
+   	
+   	<bean id="myGolfCoach"
+   		class="com.example.springdemo.GolfCoach">
+   		<constructor-arg ref = "myRdmFortuneService"/>
+   	</bean>
+   	
+   	
+</beans>
+
+
+
+
+
