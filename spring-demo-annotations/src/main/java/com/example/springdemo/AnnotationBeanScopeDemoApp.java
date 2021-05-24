@@ -2,16 +2,16 @@ package com.example.springdemo;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class BeanScopeDemoApp {
+public class AnnotationBeanScopeDemoApp {
 
 	public static void main(String[] args) {
-		//load spring config file
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("beanScope-applicationContext.xml");
+		ClassPathXmlApplicationContext ctx = 
+				new ClassPathXmlApplicationContext("spring/applicationContext.xml");
 		
-		//retrieve bena from spring container
-		Coach theCoach = ctx.getBean("myCoach", Coach.class);
+		//retrieve bean from spring container
+		Coach theCoach = ctx.getBean("tennisCoach", Coach.class);
 		
-		Coach bestCoach = ctx.getBean("myCoach", Coach.class);
+		Coach bestCoach = ctx.getBean("tennisCoach", Coach.class);
 		
 		//check if they're the same beans
 		boolean result = (theCoach == bestCoach);
@@ -25,7 +25,7 @@ public class BeanScopeDemoApp {
 		
 		//close
 		ctx.close();
-		
+
 	}
 
 }
