@@ -115,6 +115,8 @@ public class DemoAppConfig implements WebMvcConfigurer {
 			return sessionFactory;
 		}
 		
+		/*
+		// spring 5 brings default method JpaTransactionManager that replaces HibernateTransactionManager 
 		@Bean
 		@Autowired
 		public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
@@ -125,6 +127,7 @@ public class DemoAppConfig implements WebMvcConfigurer {
 
 			return txManager;
 		}
+		*/
 	
 	
 }

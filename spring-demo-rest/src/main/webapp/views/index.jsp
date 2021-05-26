@@ -12,6 +12,10 @@
 
 <a href="api/students">Students</a>
 
+<br><br>
+
+<a href="api/customers">Customers</a>
+
 </body>
 
 </html>
