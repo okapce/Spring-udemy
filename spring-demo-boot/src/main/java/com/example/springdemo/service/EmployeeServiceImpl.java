@@ -3,6 +3,7 @@ package com.example.springdemo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,8 +16,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeDAO employeeDAO;
 	
 	@Autowired
-	public EmployeeServiceImpl(EmployeeDAO theEmployeeDAO) {
+	public EmployeeServiceImpl(@Qualifier("employeeDAOJPAImpl") EmployeeDAO theEmployeeDAO) { 
+										//careful to lowercase Bean
 		employeeDAO =theEmployeeDAO;
+		
 	}
 	
 	@Override
