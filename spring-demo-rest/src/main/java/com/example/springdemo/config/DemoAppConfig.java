@@ -18,6 +18,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -43,6 +44,17 @@ public class DemoAppConfig implements WebMvcConfigurer {
 		viewResolver.setSuffix(".jsp");
 		
 		return viewResolver;
+	}
+	
+	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
+	        "classpath:/META-INF/resources/", "classpath:/resources/",
+	        "classpath:/static/", "classpath:/public/"
+	};
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	    registry.addResourceHandler("/**")
+	            .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
 	}
 	
 	@Bean
