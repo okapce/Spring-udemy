@@ -19,8 +19,8 @@ import com.example.springdemo.service.CustomerService;
 @RequestMapping("/api")
 public class CustomerRestController {
 	
-	@Autowired
-	private CustomerService customerService;
+	@Autowired //customerService is injected into this controller, as it's an intermediate layer for loading all DAOs, CustomerDao can be replaced
+	private CustomerService customerService;//CustomerDao customerDao;
 	
 	@GetMapping("/customers")
 	public List<Customer> getCustomers(){
